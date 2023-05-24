@@ -1,0 +1,110 @@
+<!--carta.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/styles.css"> <!--Vínculo CSS-->
+
+    <title>DevBURGER</title>
+
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/ee8ca4bdfe.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script src="js/function.js"></script> <!--Vínculo JS-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> <!--Vínculo VUE-->
+
+    <header>
+        <div class="container_header">
+            <div class="menu_home"><a href="home.html" target="_self">HOME</a></div>
+            <div class="menu_nosotros"><a href="nosotros.html" target="_self">NOSOTROS</a></div>
+            <div class="menu_logo"><img src="images/logo-devburger.png" alt="Logo DevBurger"></div>
+            <div class="menu_carta"><a href="carta.html" target="_self">CARTA</a></div>
+            <div class="menu_contacto"><a href="contacto.html" target="_self">CONTACTO</a></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>CONOCÉ NUESTRO</h2>
+            <h1>MENÚ</h1>
+        </div>
+        <div class="container_menu">
+            <div class="item_menu">
+                <h3>Hamburguesa C++</h3>
+                <p>Una hamburguesa "compilada" con sabor a código C++. ¡Una delicia para los programadores!</p>
+                <p>Precio: $1499</p>
+                <p>Cantidad de items: 0</p>
+                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+            </div>
+            <div class="item_menu">
+                <h3>Hamburguesa Python</h3>
+                <p>Una hamburguesa "serpenteante" con la potencia de Python. ¡Te hará sentir como un mago del código!
+                </p>
+                <p>Precio: $1299</p>
+                <p>Cantidad de items: 0</p>
+                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+            </div>
+            <div class="item_menu">
+                <h3>Hamburguesa Java</h3>
+                <p>Una jugosa hamburguesa inspirada en el lenguaje de programación Java. ¡Te llenará de energía como un
+                    JVM!</p>
+                <p>Precio: $1799</p>
+                <p>Cantidad de items: 0</p>
+                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+            </div>
+            <div class="item_menu">
+                <h3>Hamburguesa Ruby</h3>
+                <p>Una exquisita hamburguesa con un toque de magia Ruby. ¡Satisface tus papilas gustativas y tu alma de
+                    programador!</p>
+                <p>Precio: $1599</p>
+                <p>Cantidad de items: 0</p>
+                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+            </div>
+            <div class="item_menu">
+                <h3>Hamburguesa PHP</h3>
+                <p>Una sabrosa hamburguesa llena de potencia PHP. ¡Experimenta la potencia de los lenguajes web en cada
+                    mordisco!</p>
+                <p>Precio: $1349</p>
+                <p>Cantidad de items: 0</p>
+                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container_footer">
+            <div class="pie_membrete">DevBURGER</div>
+            <div class="pie_locales"><a href="contacto.html#localBuenosAires">Buenos Aires</a></div>
+            <div class="pie_redes">
+                <a href="https://www.facebook.com/devburger/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/devburger/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@devburger/" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <div class="pie_firma">DevBURGER - Diseñado por Mendoza+Noez+Trabado</div>
+        </div>
+    </footer>
+</body>
+
+</html>
