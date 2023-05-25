@@ -17,7 +17,8 @@ body {
     justify-content: space-evenly;
     align-items: center;
 }
-.container_header a{
+
+.container_header a {
     color: white;
 }
 
@@ -34,7 +35,8 @@ body {
     justify-content: space-evenly;
     align-items: center;
 }
-.container_footer a{
+
+.container_footer a {
     color: white;
 }
 
@@ -90,7 +92,8 @@ a:hover {
 .slider-home ul {
     display: flex;
     animation: cambio 20s infinite alternate linear;
-    width: 400%;    /*El ancho corresponde a la cantidad de imágenes en el carrousel, ej: 4 * 100% = 400%*/
+    width: 400%;
+    /*El ancho corresponde a la cantidad de imágenes en el carrousel, ej: 4 * 100% = 400%*/
     margin: 0;
     padding: 0;
 }
@@ -153,14 +156,21 @@ a:hover {
     display: inline-grid;
     grid-template-columns: auto auto auto;
     column-gap: 1%;
-    row-gap: 3%;  
+    row-gap: 3%;
     color: white;
     padding: 0% 1% 2% 1%;
 }
-.item_menu{
+
+.cart-container {
+    margin-top: 50px; /* Adjust the margin as needed */
+  }
+  
+
+.item_menu {
     background-color: #333;
 }
-.item_menu button{
+
+.item_menu button {
     background-color: #FF7F50;
     color: #fff;
     border: none;
@@ -170,14 +180,49 @@ a:hover {
 }
 
 @media only screen and (max-width: 600px) {
-    .container_menu{
+    .container_menu {
         grid-template-columns: auto;
         overflow: auto;
     }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 768px){
-    .container_menu{
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    .container_menu {
         grid-template-columns: auto auto;
     }
+}
+
+.testimonial {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Add this line to reduce the margin-bottom */
+}
+
+.testimonial blockquote {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial cite {
+    font-weight: bold;
+}
+
+.image-gallery.loaded .image-bg {
+    height: 100vh;
+    width: 100%;
+}
+
+
+.image-gallery .image-bg:nth-child(1) {
+    background-image: url('../images/burgerNosotros1.jpg');
+}
+
+.image-gallery .image-bg:nth-child(2) {
+    background-image: url('../images/burgerNosotros2.jpg');
+}
+
+.image-gallery .image-bg:nth-child(3) {
+    background-image: url('../images/burgerNosotros3.jpg');
 }

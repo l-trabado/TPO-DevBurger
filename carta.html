@@ -35,7 +35,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="app">
         <div class="container">
             <h2>CONOCÉ NUESTRO</h2>
             <h1>MENÚ</h1>
@@ -45,50 +45,69 @@
                 <h3>Hamburguesa C++</h3>
                 <p>Una hamburguesa "compilada" con sabor a código C++. ¡Una delicia para los programadores!</p>
                 <p>Precio: $1499</p>
-                <p>Cantidad de items: 0</p>
-                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+                <p>Cantidad de items: {{ cplusplusItems }}</p>
+                <button @click="addToCart('cplusplus')"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity('cplusplus')"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem('cplusplus')"><i class="fa-solid fa-trash"></i> Borrar</button>
             </div>
             <div class="item_menu">
                 <h3>Hamburguesa Python</h3>
                 <p>Una hamburguesa "serpenteante" con la potencia de Python. ¡Te hará sentir como un mago del código!
                 </p>
                 <p>Precio: $1299</p>
-                <p>Cantidad de items: 0</p>
-                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+                <p>Cantidad de items: {{ pythonItems }}</p>
+                <button @click="addToCart('python')"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity('python')"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem('python')"><i class="fa-solid fa-trash"></i> Borrar</button>
             </div>
             <div class="item_menu">
                 <h3>Hamburguesa Java</h3>
                 <p>Una jugosa hamburguesa inspirada en el lenguaje de programación Java. ¡Te llenará de energía como un
                     JVM!</p>
                 <p>Precio: $1799</p>
-                <p>Cantidad de items: 0</p>
-                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+                <p>Cantidad de items: {{ javaItems }}</p>
+                <button @click="addToCart('java')"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity('java')"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem('java')"><i class="fa-solid fa-trash"></i> Borrar</button>
             </div>
             <div class="item_menu">
                 <h3>Hamburguesa Ruby</h3>
                 <p>Una exquisita hamburguesa con un toque de magia Ruby. ¡Satisface tus papilas gustativas y tu alma de
                     programador!</p>
                 <p>Precio: $1599</p>
-                <p>Cantidad de items: 0</p>
-                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+                <p>Cantidad de items: {{ rubyItems }}</p>
+                <button @click="addToCart('ruby')"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity('ruby')"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem('ruby')"><i class="fa-solid fa-trash"></i> Borrar</button>
             </div>
             <div class="item_menu">
                 <h3>Hamburguesa PHP</h3>
                 <p>Una sabrosa hamburguesa llena de potencia PHP. ¡Experimenta la potencia de los lenguajes web en cada
                     mordisco!</p>
                 <p>Precio: $1349</p>
-                <p>Cantidad de items: 0</p>
-                <button @click="addToCart(item)"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity(item)"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem(item)"><i class="fa-solid fa-trash"></i> Borrar</button>
+                <p>Cantidad de items: {{phpItems}}</p>
+                <button @click="addToCart('php')"><i class="fa-solid fa-plus"></i> Añadir</button>
+                <button @click="decreaseQuantity('php')"><i class="fa-solid fa-minus"></i> Quitar</button>
+                <button @click="clearItem('php')"><i class="fa-solid fa-trash"></i> Borrar</button>
+            </div>
+        </div>
+        <div class="container_menu">
+            <div class="cart-container">
+            <div class="item_menu">
+                <h3 v-if="cplusplusItems > 0 || pythonItems > 0 || javaItems > 0 || rubyItems > 0 || phpItems > 0">Realizar pedido</h3>
+                <h3 v-else>Tu carrito está vacío</h3>
+                <template v-if="cplusplusItems > 0 || pythonItems > 0 || javaItems > 0 || rubyItems > 0 || phpItems > 0">
+                  <p v-if="cplusplusItems > 0">{{ cplusplusItems }} x Hamburguesa C++ por ${{ 1499 * cplusplusItems }}</p>
+                  <p v-if="pythonItems > 0">{{ pythonItems }} x Hamburguesa Python por ${{ 1299 * pythonItems }}</p>
+                  <p v-if="javaItems > 0">{{ javaItems }} x Hamburguesa Java por ${{ 1799 * javaItems }}</p>
+                  <p v-if="rubyItems > 0">{{ rubyItems }} x Hamburguesa Ruby por ${{ 1599 * rubyItems }}</p>
+                  <p v-if="phpItems > 0">{{ phpItems }} x Hamburguesa PHP por ${{ 1349 * phpItems }}</p>
+                  <p>Cantidad de items: {{ cplusplusItems + pythonItems + javaItems + rubyItems + phpItems }}</p>
+                  <p>Tu total es de ${{ 1499 * cplusplusItems + 1299 * pythonItems + 1799 * javaItems + 1599 * rubyItems + 1349 * phpItems }}</p>
+                  <button @click="checkout"><i class="fa-solid fa-money-bill"></i> Pagar</button>
+                  <button @click="clearAll"><i class="fa-solid fa-trash"></i> Limpiar todo</button>
+                </template>
+              </div>
             </div>
         </div>
     </main>
@@ -98,13 +117,55 @@
             <div class="pie_membrete">DevBURGER</div>
             <div class="pie_locales"><a href="contacto.html#localBuenosAires">Buenos Aires</a></div>
             <div class="pie_redes">
-                <a href="https://www.facebook.com/devburger/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/devburger/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/devburger/" target="_blank"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/devburger/" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@devburger/" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
             </div>
-            <div class="pie_firma">DevBURGER - Diseñado por Mendoza+Noez+Trabado</div>
+            <div class="pie_firma">DevBURGER - Diseñado por Mendoza, Noez y Trabado</div>
         </div>
     </footer>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                cplusplusItems: 0,
+                pythonItems: 0,
+                javaItems: 0,
+                rubyItems: 0,
+                phpItems: 0,
+                // Agregar otras variables para otros items aquí
+            },
+            methods: {
+                addToCart(item) {
+                    this[item + 'Items'] += 1;
+                },
+                decreaseQuantity(item) {
+                    if (this[item + 'Items'] > 0) {
+                        this[item + 'Items'] -= 1;
+                    }
+                },
+                clearItem(item) {
+                    this[item + 'Items'] = 0;
+                },
+                checkout() {
+                    console.log("¡Pagado!");
+                },
+                clearAll() {
+                    if (window.confirm('¿Estás seguro de que deseas limpiar todo?')) {
+                        this.cplusplusItems = 0;
+                        this.pythonItems = 0;
+                        this.javaItems = 0;
+                        this.rubyItems = 0;
+                        this.phpItems = 0;
+                        // Set the remaining variables to 0
+                        console.log("Vaciaste el carrito.")
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
