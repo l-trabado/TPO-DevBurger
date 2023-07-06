@@ -1,171 +1,140 @@
-<!--carta.html-->
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevBURGER</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!--Favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
 
-    <link rel="stylesheet" href="css/styles.css"> <!--Vínculo CSS-->
-
-    <title>DevBURGER</title>
-
-    <!--Favicon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-
-    <!--Font Awesome-->
-    <script src="https://kit.fontawesome.com/ee8ca4bdfe.js" crossorigin="anonymous"></script>
+  <!--Font Awesome-->
+  <script src="https://kit.fontawesome.com/ee8ca4bdfe.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <script src="js/function.js"></script> <!--Vínculo JS-->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> <!--Vínculo VUE-->
+  <header>
+    <div class="container_header">
+      <div class="menu_home">
+        <a href="index.html" target="_self">HOME</a>
+      </div>
+      <div class="menu_nosotros">
+        <a href="nosotros.html" target="_self">NOSOTROS</a>
+      </div>
+      <div class="menu_logo">
+        <img src="images/logo-devburger.png" alt="Logo DevBurger" />
+      </div>
+      <div class="menu_carta">
+        <a href="carta.html" target="_self">CARTA</a>
+      </div>
+      <div class="menu_contacto">
+        <a href="contacto.html" target="_self">CONTACTO</a>
+      </div>
+      <div class="menu_contacto">
+        <a href="abmmenu.html" target="_self">CONFIGURACION</a>
+      </div>
+    </div>
+  </header>
+  <script src="js/function.js"></script>
+  <!--Vínculo JS-->
+  <div id="app" style="color:white">
+    <h1>Productos</h1>
+    <div v-for="producto in productos" :key="producto.ProdID" class="item_menu">
+      <h3>{{ producto.ProdNombre }}</h3>
+      <p>{{ producto.ProdDescrp }}</p>
+      <p>Precio: ${{ producto.ProdPrecio }}</p>
+      <button @click="addToCart(producto)">Agregar al carrito</button>
+    </div>
 
-    <header>
-        <div class="container_header">
-            <div class="menu_home"><a href="index.html" target="_self">HOME</a></div>
-            <div class="menu_nosotros"><a href="nosotros.html" target="_self">NOSOTROS</a></div>
-            <div class="menu_logo"><img src="images/logo-devburger.png" alt="Logo DevBurger"></div>
-            <div class="menu_carta"><a href="carta.html" target="_self">CARTA</a></div>
-            <div class="menu_contacto"><a href="contacto.html" target="_self">CONTACTO</a></div>
-        </div>
-    </header>
+    <h2>Carrito de compras</h2>
+    <div v-for="item in carrito" :key="item.ProdID" class="item_menu">
+      <p>{{ item.nombre }}</p>
+      <p>Cantidad: {{ item.cantidad }}</p>
+      <p>Precio: ${{ item.precioTotal.toFixed(2) }}</p>
+      <button @click="decreaseQuantity(item)">-</button>
+      <button @click="increaseQuantity(item)">+</button>
+      <button @click="removeFromCart(item)">Eliminar</button>
+    </div>
+    <div class="item_menu">
+      <button @click="checkout">Pagar</button>
+      <button @click="clearAll">Vaciar carrito</button>
+    </div>
+  </div>
 
-    <main id="app">
-        <div class="container">
-            <h2>CONOCÉ NUESTRO</h2>
-            <h1>MENÚ</h1>
-        </div>
-        <div class="container_menu">
-            <div class="item_menu">
-                <h3>Hamburguesa C++</h3>
-                <p>Una hamburguesa "compilada" con sabor a código C++. ¡Una delicia para los programadores!</p>
-                <p>Precio: $1499</p>
-                <p>Cantidad de items: {{ cplusplusItems }}</p>
-                <button @click="addToCart('cplusplus')"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity('cplusplus')"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem('cplusplus')"><i class="fa-solid fa-trash"></i> Borrar</button>
-            </div>
-            <div class="item_menu">
-                <h3>Hamburguesa Python</h3>
-                <p>Una hamburguesa "serpenteante" con la potencia de Python. ¡Te hará sentir como un mago del código!
-                </p>
-                <p>Precio: $1299</p>
-                <p>Cantidad de items: {{ pythonItems }}</p>
-                <button @click="addToCart('python')"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity('python')"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem('python')"><i class="fa-solid fa-trash"></i> Borrar</button>
-            </div>
-            <div class="item_menu">
-                <h3>Hamburguesa Java</h3>
-                <p>Una jugosa hamburguesa inspirada en el lenguaje de programación Java. ¡Te llenará de energía como un
-                    JVM!</p>
-                <p>Precio: $1799</p>
-                <p>Cantidad de items: {{ javaItems }}</p>
-                <button @click="addToCart('java')"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity('java')"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem('java')"><i class="fa-solid fa-trash"></i> Borrar</button>
-            </div>
-            <div class="item_menu">
-                <h3>Hamburguesa Ruby</h3>
-                <p>Una exquisita hamburguesa con un toque de magia Ruby. ¡Satisface tus papilas gustativas y tu alma de
-                    programador!</p>
-                <p>Precio: $1599</p>
-                <p>Cantidad de items: {{ rubyItems }}</p>
-                <button @click="addToCart('ruby')"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity('ruby')"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem('ruby')"><i class="fa-solid fa-trash"></i> Borrar</button>
-            </div>
-            <div class="item_menu">
-                <h3>Hamburguesa PHP</h3>
-                <p>Una sabrosa hamburguesa llena de potencia PHP. ¡Experimenta la potencia de los lenguajes web en cada
-                    mordisco!</p>
-                <p>Precio: $1349</p>
-                <p>Cantidad de items: {{phpItems}}</p>
-                <button @click="addToCart('php')"><i class="fa-solid fa-plus"></i> Añadir</button>
-                <button @click="decreaseQuantity('php')"><i class="fa-solid fa-minus"></i> Quitar</button>
-                <button @click="clearItem('php')"><i class="fa-solid fa-trash"></i> Borrar</button>
-            </div>
-        </div>
-        <div class="container_menu">
-            <div class="cart-container">
-            <div class="item_menu">
-                <h3 v-if="cplusplusItems > 0 || pythonItems > 0 || javaItems > 0 || rubyItems > 0 || phpItems > 0">Realizar pedido</h3>
-                <h3 v-else>Tu carrito está vacío</h3>
-                <template v-if="cplusplusItems > 0 || pythonItems > 0 || javaItems > 0 || rubyItems > 0 || phpItems > 0">
-                  <p v-if="cplusplusItems > 0">{{ cplusplusItems }} x Hamburguesa C++ por ${{ 1499 * cplusplusItems }}</p>
-                  <p v-if="pythonItems > 0">{{ pythonItems }} x Hamburguesa Python por ${{ 1299 * pythonItems }}</p>
-                  <p v-if="javaItems > 0">{{ javaItems }} x Hamburguesa Java por ${{ 1799 * javaItems }}</p>
-                  <p v-if="rubyItems > 0">{{ rubyItems }} x Hamburguesa Ruby por ${{ 1599 * rubyItems }}</p>
-                  <p v-if="phpItems > 0">{{ phpItems }} x Hamburguesa PHP por ${{ 1349 * phpItems }}</p>
-                  <p>Cantidad de items: {{ cplusplusItems + pythonItems + javaItems + rubyItems + phpItems }}</p>
-                  <p>Tu total es de ${{ 1499 * cplusplusItems + 1299 * pythonItems + 1799 * javaItems + 1599 * rubyItems + 1349 * phpItems }}</p>
-                  <button @click="checkout"><i class="fa-solid fa-money-bill"></i> Pagar</button>
-                  <button @click="clearAll"><i class="fa-solid fa-trash"></i> Limpiar todo</button>
-                </template>
-              </div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container_footer">
-            <div class="pie_membrete">DevBURGER</div>
-            <div class="pie_locales"><a href="contacto.html#localBuenosAires">Buenos Aires</a></div>
-            <div class="pie_redes">
-                <a href="https://www.facebook.com/devburger/" target="_blank"><i
-                        class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/devburger/" target="_blank"><i
-                        class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@devburger/" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-            <div class="pie_firma">DevBURGER - Diseñado por Mendoza, Noez y Trabado</div>
-        </div>
-    </footer>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                cplusplusItems: 0,
-                pythonItems: 0,
-                javaItems: 0,
-                rubyItems: 0,
-                phpItems: 0,
-                // Agregar otras variables para otros items aquí
-            },
-            methods: {
-                addToCart(item) {
-                    this[item + 'Items'] += 1;
-                },
-                decreaseQuantity(item) {
-                    if (this[item + 'Items'] > 0) {
-                        this[item + 'Items'] -= 1;
-                    }
-                },
-                clearItem(item) {
-                    this[item + 'Items'] = 0;
-                },
-                checkout() {
-                    console.log("¡Pagado!");
-                },
-                clearAll() {
-                    if (window.confirm('¿Estás seguro de que deseas limpiar todo?')) {
-                        this.cplusplusItems = 0;
-                        this.pythonItems = 0;
-                        this.javaItems = 0;
-                        this.rubyItems = 0;
-                        this.phpItems = 0;
-                        // Set the remaining variables to 0
-                        console.log("Vaciaste el carrito.")
-                    }
-                }
-            }
-        });
-    </script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        productos: [],
+        carrito: [],
+      },
+      mounted() {
+        this.fetchData();
+      },
+      methods: {
+        fetchData() {
+          fetch("https://devburgercac.pythonanywhere.com/productos")
+            .then(response => response.json())
+            .then(data => {
+              this.productos = data;
+            })
+            .catch(error => {
+              console.error("Error al obtener los datos:", error);
+            });
+        },
+        addToCart(producto) {
+          const itemIndex = this.carrito.findIndex(item => item.ProdID === producto.ProdID);
+          if (itemIndex !== -1) {
+            this.carrito[itemIndex].cantidad += 1;
+          } else {
+            this.carrito.push({
+              ProdID: producto.ProdID,
+              nombre: producto.ProdNombre,
+              precio: producto.ProdPrecio,
+              cantidad: 1,
+            });
+          }
+          this.updateTotalPrice();
+        },
+        decreaseQuantity(item) {
+          if (item.cantidad > 0) {
+            item.cantidad -= 1;
+            this.updateTotalPrice();
+          }
+        },
+        increaseQuantity(item) {
+          item.cantidad += 1;
+          this.updateTotalPrice();
+        },
+        updateTotalPrice() {
+          this.carrito.forEach(item => {
+            item.precioTotal = item.precio * item.cantidad;
+          });
+        },
+        removeFromCart(item) {
+          const itemIndex = this.carrito.findIndex(i => i.ProdID === item.ProdID);
+          if (itemIndex !== -1) {
+            this.carrito.splice(itemIndex, 1);
+          }
+        },
+        checkout() {
+          window.confirm(
+            "Gracias por comprar en DevBurger, próximamente recibirás un correo con tu pedido!"
+          );
+          console.log("¡Pagado!");
+        },
+        clearAll() {
+          if (window.confirm("¿Estás seguro de que deseas limpiar todo?")) {
+            this.carrito = [];
+            console.log("Vaciaste el carrito.");
+          }
+        },
+      },
+    });
+  </script>
 </body>
 
 </html>

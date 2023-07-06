@@ -1,5 +1,8 @@
-/*styles.css*/
-* {
+/* styles.css */
+
+/* Global Styles */
+
+*    {
     box-sizing: border-box;
     font-family: 'Source Code Pro', monospace;
     text-align: center;
@@ -10,6 +13,75 @@ body {
     background-color: black;
 }
 
+/* Logo Styles */
+
+.logo-container {
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.5);
+}
+
+.logo {
+    display: block;
+    border-radius: 50%;
+}
+
+/* Container Styles */
+
+.container_home {
+    display: inline-grid;
+    grid-template-columns: 100px 1fr 1000px 100px;
+    grid-template-areas:
+        "container_header"
+        "slider-home"
+        "container_articulo"
+        "container_footer";
+}
+
+.container_articulo {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* Article Styles */
+
+article {
+    color: #000000;
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 20%;
+}
+
+article h2 {
+    font-size: 48px;
+}
+
+article p {
+    font-size: 28px;
+    line-height: 1.8;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+p.link-carta {
+    background-color: transparent;
+}
+
+/* Header Styles */
+
 .container_header {
     background: #FF7F50;
     height: 100px;
@@ -19,12 +91,14 @@ body {
 }
 
 .container_header a {
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .menu_logo {
     margin-top: 0.29%;
 }
+
+/* Footer Styles */
 
 .container_footer {
     background: #FF7F50;
@@ -47,6 +121,8 @@ body {
     color: white;
 }
 
+/* Google Maps Styles */
+
 .cuerpo_Gmaps {
     width: 100%;
     padding-top: 1%;
@@ -55,6 +131,8 @@ body {
 #mapa {
     width: 100%;
 }
+
+/* Form Input Styles */
 
 input,
 textarea {
@@ -65,13 +143,18 @@ textarea {
     font-size: medium;
 }
 
+/* Image Styles */
+
 img {
     width: auto;
     height: 100px;
 }
 
+/* Link Styles */
+
 a {
     color: #FF7F50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 a:link {
@@ -82,10 +165,11 @@ a:hover {
     text-decoration: underline;
 }
 
-/*CSS exclusivo home.html*/
+/* Home Page Exclusive Styles */
+
 .slider-home {
     width: 100%;
-    height: auto;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -93,7 +177,6 @@ a:hover {
     display: flex;
     animation: cambio 20s infinite alternate linear;
     width: 400%;
-    /*El ancho corresponde a la cantidad de imágenes en el carrousel, ej: 4 * 100% = 400%*/
     margin: 0;
     padding: 0;
 }
@@ -106,43 +189,34 @@ a:hover {
 .slider-home img {
     width: 100%;
     height: 100%;
+    min-width: 100%;
+    object-fit: cover;
 }
 
 @keyframes cambio {
-    0% {
-        margin-left: 0;
-    }
 
+    0%,
     20% {
         margin-left: 0;
     }
 
-    25% {
-        margin-left: -100%;
-    }
-
+    25%,
     45% {
         margin-left: -100%;
     }
 
-    50% {
-        margin-left: -200%;
-    }
-
+    50%,
     70% {
         margin-left: -200%;
     }
 
-    75% {
-        margin-left: -300%;
-    }
-
+    75%,
     100% {
         margin-left: -300%;
     }
 }
 
-@media only screen and (min-width:320px) and (max-width:768px) {
+@media only screen and (min-width: 320px) and (max-width: 768px) {
 
     .slider,
     .slider ul,
@@ -151,7 +225,8 @@ a:hover {
     }
 }
 
-/*CSS exclusivo carta.html*/
+/* Menu Page Exclusive Styles */
+
 .container_menu {
     display: inline-grid;
     grid-template-columns: auto auto auto;
@@ -162,9 +237,8 @@ a:hover {
 }
 
 .cart-container {
-    margin-top: 50px; /* Adjust the margin as needed */
-  }
-  
+    margin-top: 50px;
+}
 
 .item_menu {
     background-color: #333;
@@ -192,11 +266,12 @@ a:hover {
     }
 }
 
+/* Testimonial Styles */
+
 .testimonial {
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 20px;
-    /* Add this line to reduce the margin-bottom */
+    margin-bottom: 10px;
 }
 
 .testimonial blockquote {
@@ -209,11 +284,12 @@ a:hover {
     font-weight: bold;
 }
 
+/* Image Gallery Styles */
+
 .image-gallery.loaded .image-bg {
     height: 100vh;
     width: 100%;
 }
-
 
 .image-gallery .image-bg:nth-child(1) {
     background-image: url('../images/burgerNosotros1.jpg');
@@ -225,4 +301,44 @@ a:hover {
 
 .image-gallery .image-bg:nth-child(3) {
     background-image: url('../images/burgerNosotros3.jpg');
+}
+
+/* Sticky Footer Styles */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 1200px) {
+    .slider-home img {
+        min-width: 1200px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .slider-home img {
+        min-width: 992px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .slider-home img {
+        min-width: 768px;
+    }
 }
